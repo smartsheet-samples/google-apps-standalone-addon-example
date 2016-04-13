@@ -1,5 +1,7 @@
 /* 
-See smartsheetAuthConfig.js for SMARTSHEET_CLIENT_SECRET & SMARTSHEET_CLIENT_ID
+Define SMARTSHEET_CLIENT_SECRET & SMARTSHEET_CLIENT_ID in smartsheet_client_secret.js like so:
+var SMARTSHEET_CLIENT_SECRET = '<YOUR CLIENT SECRET>';
+var SMARTSHEET_CLIENT_ID = '<YOUR CLIENT ID>'
 */
 
 function getSmartsheetService() {
