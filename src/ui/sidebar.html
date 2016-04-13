@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet"
+      href="https://ssl.gstatic.com/docs/script/css/add-ons1.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    
+    <?!= include('stylesheet'); ?>
+     
+  </head>
+  <body>
+    <script>
+    $(function() {
+        $('#logout').click(function() {
+            console.log('logout (client)');
+            google.script.run.withSuccessHandler(function () {
+                google.script.run.showSidebar();
+            })
+            .smartsheetLogout();
+        });
+        
+        $('#login').click(function() {
+            //open the window with a script so that we can close it later.
+            var authPopup = window.open('<?!=authorizationUrl?>');
+            $(authPopup).on("message onmessage", function(e) {
+                console.log('messge received:%j', e);
+                var data = e.data || e.originalEvent.data;
+                if (data == 'smartsheet.authComplete') {
+                    // close auth popup and send a server request to re-load this sidebar:
+                    authPopup.close();
+                    google.script.run.withSuccessHandler(function(userResult) {
+                        console.log('showSidebar success');
+                    }).showSidebar();
+                }
+            });
+        });
+        <? if (isSmartsheetAuthorized) { ?>
+            var smartsheetUserProfile = '<?!=smartsheetUserProfile?>';
+            var userProfileObj = null;
+            if (smartsheetUserProfile && smartsheetUserProfile.length > 0) {
+                userProfileObj = JSON.parse(smartsheetUserProfile);
+                $('#userPlaceholder').text(userProfileObj.email);
+            }
+        <? } ?>
+    });
+    </script>
+    
+    <div class="basic-container">
+    <? if (isSmartsheetAuthorized) { ?>
+      <span class="small" id="userPlaceholder">&nbsp;</span> 
+      <button id="logout">Logout</button>
+    <? } else { ?>
+     You are not logged into Smartsheet. <button class="action" id="login">Login</button>
+    <? } ?>
+    </div>
+    
+  </body>
+</html>

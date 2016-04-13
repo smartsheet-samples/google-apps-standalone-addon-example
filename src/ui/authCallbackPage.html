@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet"
+      href="https://ssl.gstatic.com/docs/script/css/add-ons1.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    
+    <?!= include('stylesheet'); ?>
+    
+  </head>
+  <body>
+      <? if (isSmartsheetAuthorized) { ?>
+       <h1>Success! You can close this tab.</h1>
+       <script>
+        $(function() {
+            console.log('page load. window.opener:%s', window.opener);
+            if (window.opener) {
+                console.log('sending message to opener...');
+                window.opener.postMessage('smartsheet.authComplete', '*');
+            }
+        });
+       </script>
+      <? } else { ?>
+       <h1>Login failed. You can close this tab and try logging in again.</h1>
+      <? } ?>
+  </body>
+</html>
+
+
