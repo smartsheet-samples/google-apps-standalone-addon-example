@@ -13,11 +13,6 @@
        <h1>Success! You can close this tab.</h1>
        <script>
         $(function() {
-            console.log('page load. window.opener:%s', window.opener);
-            if (window.opener) {
-                console.log('sending message to opener...');
-                window.opener.postMessage('smartsheet.authComplete', '*');
-            }
         });
        </script>
       <? } else { ?>

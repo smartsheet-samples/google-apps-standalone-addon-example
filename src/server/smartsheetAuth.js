@@ -62,6 +62,10 @@ function smartsheetTokenHandler(payload) {
 function authCallback(request) {
   var smartsheetService = getSmartsheetService();
   var isAuthorized = smartsheetService.handleCallback(request);
+  if (isAuthorized) {
+      //show the sidebar again to refresh it:
+      showSidebar();
+  }
   var t = HtmlService.createTemplateFromFile('authCallbackPage');
   t.isSmartsheetAuthorized = isAuthorized;
   return t.evaluate().setSandboxMode(HtmlService.SandboxMode.IFRAME);

@@ -20,19 +20,7 @@
         });
         
         $('#login').click(function() {
-            //open the window with a script so that we can close it later.
             var authPopup = window.open('<?!=authorizationUrl?>');
-            $(authPopup).on("message onmessage", function(e) {
-                console.log('messge received:%j', e);
-                var data = e.data || e.originalEvent.data;
-                if (data == 'smartsheet.authComplete') {
-                    // close auth popup and send a server request to re-load this sidebar:
-                    authPopup.close();
-                    google.script.run.withSuccessHandler(function(userResult) {
-                        console.log('showSidebar success');
-                    }).showSidebar();
-                }
-            });
         });
         <? if (isSmartsheetAuthorized) { ?>
             var smartsheetUserProfile = '<?!=smartsheetUserProfile?>';
