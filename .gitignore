@@ -2,3 +2,4 @@
 /gapps.config.json
 /gapps_client_secret.json
 /src/server/smartsheet_client_secret.js
+/node_modules/

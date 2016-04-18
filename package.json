@@ -1,0 +1,27 @@
+{
+  "name": "google-apps-standalone-addon-example",
+  "version": "1.0.0",
+  "description": "An example of using Google Apps Standalone Scripts to create a Google Apps Add-On that uses the Smartsheet API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartsheet-platform/google-apps-standalone-addon-example.git"
+  },
+  "keywords": [
+    "smartsheet",
+    "google",
+    "google-apps"
+  ],
+  "author": "Scott Willeke <scott@willeke.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/smartsheet-platform/google-apps-standalone-addon-example/issues"
+  },
+  "homepage": "https://github.com/smartsheet-platform/google-apps-standalone-addon-example#readme",
+  "devDependencies": {
+    "node-google-apps-script": "^1.1.5"
+  }
+}
