@@ -9,9 +9,11 @@ You can use this project as a template for creating your own Google Apps Add-on 
     1. NOTE: The `gapps` package requires at least node 0.12.
 1. 1. Follow [these steps to initialize node-google-apps-script](https://www.npmjs.com/package/node-google-apps-script#quickstart).  
     1. In following these steps create **A new Apps Script project**.
-1. After succesfully completing the `gapps auth` and `gapps init <fileId>` steps in the process from the prior step, run `gapps upload` to upload to upload this project into your newly created Google Apps Script project.
-1. Then, from within the project viewer in your browser (at https://script.google.com...), select **Publish > Deploy as web app**
-1. Using the script's current web app URL, go to Smartsheet to create a [Third Party App](http://smartsheet-platform.github.io/api-docs/#third-party-app-development). Use the App Script current web app URL as the value for the Redirect URL in the Third Party App. Once completed, you will be given a Client ID and Client Secret. Add those values to `/src/server/smartsheet_client_secret.js`.
+1. After successfully completing the `gapps auth` and `gapps init <fileId>` steps in the process from the prior step, run `gapps upload` to upload to upload this project into your newly created Google Apps Script project.
+
+1. Next, you will create a [Third Party App](http://smartsheet-platform.github.io/api-docs/#third-party-app-development) in Smartsheet.
+    1. The Redirect URL will be `https://script.google.com/macros/d/{PROJECT_KEY}/usercallback`. The `{PROJECT_KEY}` can be found in your Google Apps Script code editor by navigating to `File > Project Properties`.
+Once the Third Party App is registered, you will be given a Client ID and Client Secret. Add those values to `/src/server/smartsheet_client_secret.js`.
 1. Then, back in the Google Apps Script project viewer in your browser (at https://script.google.com...), select **Publish >
  Test as add-on** from the menu.
 1. Use the following values in the *Configure New Test* window.
