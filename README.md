@@ -7,10 +7,9 @@ You can use this project as a template for creating your own Google Apps Add-on 
 # Getting Started
 1. Install [gapps](https://www.npmjs.com/package/node-google-apps-script#12-independent-developer-console-project) using `npm install -g node-google-apps-script`
     1. NOTE: The `gapps` package requires at least node 0.12.
-1. 1. Follow [these steps to initialize node-google-apps-script](https://www.npmjs.com/package/node-google-apps-script#quickstart).  
+1. Follow [these steps to initialize node-google-apps-script](https://www.npmjs.com/package/node-google-apps-script#quickstart).  
     1. In following these steps create **A new Apps Script project**.
 1. After successfully completing the `gapps auth` and `gapps init <fileId>` steps in the process from the prior step, run `gapps upload` to upload to upload this project into your newly created Google Apps Script project.
-
 1. Next, you will create a [Third Party App](http://smartsheet-platform.github.io/api-docs/#third-party-app-development) in Smartsheet.
     1. The Redirect URL will be `https://script.google.com/macros/d/{PROJECT_KEY}/usercallback`. The `{PROJECT_KEY}` can be found in your Google Apps Script code editor by navigating to `File > Project Properties`.
 Once the Third Party App is registered, you will be given a Client ID and Client Secret. Add those values to `/src/server/smartsheet_client_secret.js`.
@@ -23,8 +22,6 @@ Once the Third Party App is registered, you will be given a Client ID and Client
 1. From the newly created entry at the top under *Execute Saved Test*, select **Test** to open the doc.
 1. Choose **Add-ons > gapps-standalone-smartsheet-addon > Show sidebar**.
 1. Click the login button in the sidebar and choose *Allow* from the authorization page and then close the tab. Now you should see your email address and a list of sheets which were the result of two successful API calls to the smartsheet API.
-
-
 
 # Tools Used
 The example relies on the following tools:
