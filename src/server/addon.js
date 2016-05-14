@@ -13,7 +13,7 @@ function onInstall(e) {
  */
 function onOpen(e) {
     SpreadsheetApp.getUi() // Or DocumentApp or FormApp.
-      .createMenu('Smartsheet Add-On')
+      .createMenu('Smartsheet Example Add-On')
       .addItem('Show sidebar', 'showSidebar')
       .addToUi();
 }
@@ -27,7 +27,7 @@ function showSidebar() {
     var hasAccess = isSmartsheetAuthorized();
     page.isSmartsheetAuthorized = hasAccess;
     if (hasAccess) {
-        page.smartsheetUserProfile = JSON.stringify(getSmartsheetUser()); 
+        page.smartsheetUserProfile = JSON.stringify(getSmartsheetUser());
     } else {
         page.smartsheetUserProfile = null;
     }

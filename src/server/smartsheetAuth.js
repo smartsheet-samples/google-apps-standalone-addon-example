@@ -1,14 +1,14 @@
-/* 
+/*
 Define SMARTSHEET_CLIENT_SECRET & SMARTSHEET_CLIENT_ID in smartsheet_client_secret.js like so:
+var SMARTSHEET_CLIENT_ID = '<YOUR CLIENT ID>';
 var SMARTSHEET_CLIENT_SECRET = '<YOUR CLIENT SECRET>';
-var SMARTSHEET_CLIENT_ID = '<YOUR CLIENT ID>'
 */
 
 function getSmartsheetService() {
   // Create a new service with the given name. The name will be used when
   // persisting the authorized token, so ensure it is unique within the
   // scope of the property store.
-  return OAuth2.createService('scott_smartsheet')
+  return OAuth2.createService('smartsheet_auth_service')
 
       // Set the endpoint URLs, which are the same for all Google services.
       .setAuthorizationBaseUrl('https://app.smartsheet.com/b/authorize')
@@ -27,7 +27,7 @@ function getSmartsheetService() {
 
       // Set the scopes to request (space-separated for Google services).
       .setScope('READ_SHEETS')
-  
+
       // Set the handler for adding Smartsheet's required SHA hash parameter to the payload:
       .setTokenPayloadHandler(smartsheetTokenHandler)
       ;
@@ -55,7 +55,7 @@ function smartsheetTokenHandler(payload) {
   if (payload.client_secret) {
     delete payload.client_secret;
   }
-  return payload;  
+  return payload;
 }
 
 // Specified in getSmartsheetService to handle OAuth callback.
@@ -79,6 +79,6 @@ function smartsheetLogout() {
   getSmartsheetService().reset();
 }
 
-function getSmartsheetAccessToken() { 
+function getSmartsheetAccessToken() {
   return getSmartsheetService().getAccessToken();
 }
