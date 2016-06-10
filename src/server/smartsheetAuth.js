@@ -10,11 +10,12 @@ function getSmartsheetService() {
   // scope of the property store.
   return OAuth2.createService('smartsheet_auth_service')
 
-      // Set the endpoint URLs, which are the same for all Google services.
+      // Set the Smartsheet endpoint URLs
       .setAuthorizationBaseUrl('https://app.smartsheet.com/b/authorize')
       .setTokenUrl('https://api.smartsheet.com/2.0/token')
 
-      // Set the client ID and secret, from the Google Developers Console.
+      // Set the client ID and secret, from the App Profile of the app you created in
+      // the Smartsheet Developer Tools.
       .setClientId(SMARTSHEET_CLIENT_ID)
       .setClientSecret(SMARTSHEET_CLIENT_SECRET)
 
@@ -25,7 +26,7 @@ function getSmartsheetService() {
       // Set the property store where authorized tokens should be persisted.
       .setPropertyStore(PropertiesService.getUserProperties())
 
-      // Set the scopes to request (space-separated for Google services).
+      // Set the scopes to request
       .setScope('READ_SHEETS')
 
       // Set the handler for adding Smartsheet's required SHA hash parameter to the payload:

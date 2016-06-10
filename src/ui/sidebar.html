@@ -4,9 +4,9 @@
     <link rel="stylesheet"
       href="https://ssl.gstatic.com/docs/script/css/add-ons1.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    
+
     <?!= include('stylesheet'); ?>
-     
+
   </head>
   <body>
     <script>
@@ -18,7 +18,7 @@
             })
             .smartsheetLogout();
         });
-        
+
         $('#login').on('click', function() {
             var authPopup = window.open('<?!=authorizationUrl?>');
         });
@@ -29,16 +29,16 @@
                 userProfileObj = JSON.parse(smartsheetUserProfile);
                 $('#userPlaceholder').text(userProfileObj.email);
             }
-            
+
             // now get the sheets:
             google.script.run.withSuccessHandler(function (sheets) {
                 console.log('getSheets callback data: ', sheets);
                 if (sheets) {
                     var list = $('#sheets').append($('<ul id="sheetsList"/>'));
-                    
+
                     sheets.data.forEach(function(sheet) {
                         var li = $('<li class="sheetItem" data-sheetid="' + sheet.id + '">' + sheet.name + '</li>');
-                        li.on('click', 
+                        li.on('click',
                             sheet,
                             sheetHandler
                         );
@@ -46,7 +46,7 @@
                     });
                 }
             }).getSheets();
-            
+
             function sheetHandler(e) {
                 var listItem = $(this);
                 google.script.run.withSuccessHandler(function(getSheetResponse){
@@ -55,22 +55,21 @@
                         listItem.append('<ul><li>Look in the console for sheet information.</li></ul>');
                     }
                 }).getSheet(e.data.id);
-            }   
+            }
         <? } ?>
     });
     </script>
-    
     <div class="basic-container">
     <? if (isSmartsheetAuthorized) { ?>
-      <span class="small" id="userPlaceholder">&nbsp;</span> 
+      <span class="small" id="userPlaceholder">&nbsp;</span>
       <button id="logout">Logout</button>
       <div id="sheets" class="basic-container">
           &nbsp;
-      </div>    
+      </div>
     <? } else { ?>
      You are not logged into Smartsheet. <button class="action" id="login">Login</button>
     <? } ?>
     </div>
-    
+
   </body>
 </html>
