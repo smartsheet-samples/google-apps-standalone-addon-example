@@ -27,7 +27,7 @@ function getSmartsheetService() {
       .setPropertyStore(PropertiesService.getUserProperties())
 
       // Set the scopes to request
-      .setScope('READ_SHEETS')
+      .setScope('READ_SHEETS WRITE_SHEETS CREATE_SHEETS')
 
       // Set the handler for adding Smartsheet's required SHA hash parameter to the payload:
       .setTokenPayloadHandler(smartsheetTokenHandler)

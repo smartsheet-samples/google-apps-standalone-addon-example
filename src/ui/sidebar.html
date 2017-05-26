@@ -22,6 +22,11 @@
         $('#login').on('click', function() {
             var authPopup = window.open('<?!=authorizationUrl?>');
         });
+        $("#createSheet").on("click", function() {
+            google.script.run.withSuccessHandler(function(response) {
+                $("#createResponse").text(JSON.stringify(response));
+            }).createSheet();
+        });
         <? if (isSmartsheetAuthorized) { ?>
             var smartsheetUserProfile = '<?!=smartsheetUserProfile?>';
             var userProfileObj = null;
@@ -63,6 +68,8 @@
     <? if (isSmartsheetAuthorized) { ?>
       <span class="small" id="userPlaceholder">&nbsp;</span>
       <button id="logout">Logout</button>
+      <button id="createSheet">Create Sheet</button>
+      <p id="createResponse"></p>
       <div id="sheets" class="basic-container">
           &nbsp;
       </div>
