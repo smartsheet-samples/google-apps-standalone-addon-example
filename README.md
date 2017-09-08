@@ -11,7 +11,7 @@ You can use this project as a template for creating your own Google Apps Add-on 
 # Tools Used
 The example relies on the following tools:
 
-* [gas](https://www.npmjs.com/package/google-apps-script) -- npm package for locally developer Google Apps Script projects.
+* [gas](https://www.npmjs.com/package/google-apps-script) -- npm package for locally developing Google Apps Script projects.
 * [OAuth2 for Apps Script](https://github.com/googlesamples/apps-script-oauth2) -- Google's library for enabling OAuth to the Smartsheet API.
 
 # Additional Notes
