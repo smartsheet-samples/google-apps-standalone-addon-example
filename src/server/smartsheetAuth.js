@@ -67,7 +67,7 @@ function authCallback(request) {
       //show the sidebar again to refresh it:
       showSidebar();
   }
-  var t = HtmlService.createTemplateFromFile('authCallbackPage');
+  var t = HtmlService.createTemplateFromFile('ui/authCallbackPage');
   t.isSmartsheetAuthorized = isAuthorized;
   return t.evaluate().setSandboxMode(HtmlService.SandboxMode.IFRAME);
 }

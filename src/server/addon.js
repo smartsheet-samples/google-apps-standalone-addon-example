@@ -22,7 +22,7 @@ function showSidebar() {
   var page = null;
 
   if (!page) {
-    page = HtmlService.createTemplateFromFile('sidebar');
+    page = HtmlService.createTemplateFromFile('ui/sidebar');
     page.authorizationUrl = getSmartsheetService().getAuthorizationUrl();
     var hasAccess = isSmartsheetAuthorized();
     page.isSmartsheetAuthorized = hasAccess;
